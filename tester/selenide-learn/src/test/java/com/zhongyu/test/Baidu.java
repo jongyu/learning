@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Baidu {
@@ -18,6 +19,7 @@ public class Baidu {
         $(By.partialLinkText("zhongyu.biz")).click();
         switchTo().window("ZhongYuOwO");
         $(By.partialLinkText("路线图")).click();
+        $("#posts .post-title").shouldHave(text("测试学习路线图"));
         sleep(5000);
     }
 
