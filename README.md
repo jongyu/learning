@@ -1,23 +1,5 @@
-## 学习
+### Learn
 
-#### 包含以下内容
-* Java
-* Python
-* Test
-* BDD
-
-##### Java
-* SpringMVC
-* SpringData
-* MyBatis
-* Hibernate
-* Flink
-* Kafka
-* JSoup
-
-##### Test
-* Bean Shell
-* Selenium
-
-##### BDD
-* Cucumber
+- develop 开发
+- crawlers 爬虫
+- tester 测试
