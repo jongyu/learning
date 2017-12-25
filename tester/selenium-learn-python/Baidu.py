@@ -1,5 +1,7 @@
 from selenium import webdriver
 
+# executable_path=驱动路径
+# driver = webdriver.Chrome(executable_path="/Applications/chromedriver")
 driver = webdriver.Chrome()
 driver.maximize_window()
 driver.get("https://www.baidu.com")
