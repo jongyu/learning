@@ -4,6 +4,8 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,6 +14,8 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class CalculatorTest {
+
+    private Logger logger = LoggerFactory.getLogger(CalculatorTest.class);
 
     private AndroidDriver driver;
 
@@ -39,7 +43,7 @@ public class CalculatorTest {
         driver.findElementById("eq").click();
 
         String result = driver.findElement(By.id("formula")).getText();
-        System.out.println("7 * 8 = " + result);
+        logger.info("7 * 8 = " + result);
     }
 
     @AfterMethod
