@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -44,6 +45,7 @@ public class CalculatorTest {
 
         String result = driver.findElement(By.id("formula")).getText();
         logger.info("7 * 8 = " + result);
+        Assert.assertEquals(Integer.parseInt(result), 56);
     }
 
     @AfterMethod
