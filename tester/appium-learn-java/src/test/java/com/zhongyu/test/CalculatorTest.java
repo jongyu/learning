@@ -42,7 +42,6 @@ public class CalculatorTest {
         driver.findElementById("op_mul").click();
         driver.findElementById("digit_8").click();
         driver.findElementById("eq").click();
-
         String result = driver.findElement(By.id("formula")).getText();
         logger.info("7 * 8 = " + result);
         Assert.assertEquals(Integer.parseInt(result), 56);
