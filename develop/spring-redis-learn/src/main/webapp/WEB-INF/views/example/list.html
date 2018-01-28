@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <title>例子</title>
+    <link th:href="@{/assert/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/assert/plugins/animate.css/animate.min.css}" rel="stylesheet">
+    <link th:href="@{/assert/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/assert/plugins/bootstrap-table/css/bootstrap-table.min.css}" rel="stylesheet">
+    <link th:href="@{/assert/plugins/layer/mobile/need/layer.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="table" class="table table-hover"></table>
+        </div>
+    </div>
+</div>
+<script th:src="@{/assert/plugins/jquery/jquery.min.js}"></script>
+<script th:src="@{/assert/plugins/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/assert/plugins/bootstrap-table/js/bootstrap-table.min.js}"></script>
+<script th:src="@{/assert/plugins/bootstrap-table/js/bootstrap-table-zh-CN.min.js}"></script>
+<script th:src="@{/assert/plugins/layer/layer.js}"></script>
+<script th:src="@{/assert/js/DateFormat.js}"></script>
+<script>
+    var dataUrl = 'pager';
+    $(document).ready(function () {
+        $('#table').bootstrapTable('destroy').bootstrapTable({
+            url: dataUrl,
+            striped: true,                   //间隔色
+            pagination: true,                //启动分页
+            pageSize: 10,                    //每页条数
+            pageNumber: 1,                   //当前第几页
+            pageList: [10, 20, 30, 40, 50],  //记录数可选列表
+            search: false,                   //是否启用查询
+            sidePagination: 'server',        //分页方式
+            columns: [{
+                title: '编号',
+                field: 'id',
+                align: 'center',
+            }, {
+                title: '姓名',
+                field: 'name',
+                align: 'center',
+            }, {
+                title: '年龄',
+                field: 'age',
+                align: 'center',
+            }, {
+                title: '性别',
+                field: 'sex',
+                align: 'center',
+                formatter: genderSex
+            }, {
+                title: '生日',
+                field: 'birthday',
+                align: 'center',
+                formatter: formatDate
+            }, {
+                title: '操作',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    var id = row.id;
+                    return '<a href="javascript:;" onclick="doUpdate(' + "'" + id + "'" + ')" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i>编辑</a>' + '&nbsp;' + '<a href="javascript:;" onclick="doRemove(' + "'" + id + "'" + ')" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i>删除</a>';
+                }
+            }],
+            queryParams: function queryParams(params) {
+                var param = {
+                    limit: params.limit,
+                    offset: (params.offset / params.limit) + 1
+                };
+                return param;
+            },
+            onLoadSuccess: function () {
+                console.log('加载成功')
+            },
+            onLoadError: function () {
+                console.log('加载失败')
+            }
+        });
+    });
+    function doUpdate(id) {
+        layer.open({
+            type: 2,
+            title: '编辑',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['600px', '445px'],
+            fix: false,
+            maxmin: true,
+            content: "example/" + id
+        });
+    }
+    function doRemove(id) {
+        layer.confirm('确定删除吗?', {
+            btn: ['确定', '取消']
+        }, function () {
+            $.ajax({
+                url: 'example/' + id,
+                type: 'DELETE',
+                success: function (data) {
+                    console.log(data.success)
+                    if (data.success == 'true') {
+                        $('#table').bootstrapTable('refresh', {url: dataUrl});
+                    }
+                    layer.closeAll();
+                }
+            });
+        }, function () {
+            return;
+        });
+    }
+    function genderSex(value, row, index) {
+        if (value == null || value == undefined) {
+            return "-";
+        } else if (value == 1) {
+            return "男";
+        } else if (value == 0) {
+            return "女";
+        }
+    }
+</script>
+</body>
+</html>
