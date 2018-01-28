@@ -1,0 +1,8 @@
+server:
+  #访问端口
+  port: 8080
+  #项目访问路径
+  #context-path: /spring
+constants: Hello World
+com:
+  nickname: 张三

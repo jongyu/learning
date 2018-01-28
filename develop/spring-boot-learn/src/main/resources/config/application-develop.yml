@@ -1,0 +1,8 @@
+server:
+  #访问端口
+  port: 80
+  #项目访问路径
+  #context-path: /spring
+constants: Hello Spring Boot
+com:
+  nickname: 李四
