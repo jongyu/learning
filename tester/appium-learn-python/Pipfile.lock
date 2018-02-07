@@ -1,0 +1,47 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "8d0919b5d58cbb7c44dab7b2cc632ce9d25fa202a72653690e2647dde4227ccd"
+        },
+        "host-environment-markers": {
+            "implementation_name": "cpython",
+            "implementation_version": "3.6.4",
+            "os_name": "posix",
+            "platform_machine": "x86_64",
+            "platform_python_implementation": "CPython",
+            "platform_release": "17.4.0",
+            "platform_system": "Darwin",
+            "platform_version": "Darwin Kernel Version 17.4.0: Sun Dec 17 09:19:54 PST 2017; root:xnu-4570.41.2~1/RELEASE_X86_64",
+            "python_full_version": "3.6.4",
+            "python_version": "3.6",
+            "sys_platform": "darwin"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.6"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.python.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "appium-python-client": {
+            "hashes": [
+                "sha256:235bcb824f187df80e5b1af79064894a51d88b6711c051f9f953ee0aa29bce8e"
+            ],
+            "version": "==0.26"
+        },
+        "selenium": {
+            "hashes": [
+                "sha256:b0a06afa31a80d7dcb627eafb62776488b20bdaffcd807ac4158fadbc11061f4",
+                "sha256:a34a833d89bcfb463bfba5e5515a9276bb94221787b409f0ad28d2f91903e31d"
+            ],
+            "version": "==3.9.0"
+        }
+    },
+    "develop": {}
+}
