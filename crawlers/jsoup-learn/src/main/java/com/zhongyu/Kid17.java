@@ -40,16 +40,16 @@ public class Kid17 {
         Connection.Response html = null;
         try {
             html = Jsoup.connect(url)
+                    .cookie("Cookie", cookie)
                     .header("Host", host)
-                    .header("Connection", "keep-alive")
-                    .header("Cache-Control", "max-age=0")
                     .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
-                    .header("Upgrade-Insecure-Requests", "1")
-                    .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36")
+                    .header("Connection", "keep-alive")
                     .header("Content-Type", "text/html;charset=utf-8")
+                    .header("Cache-Control", "max-age=0")
+                    .header("Upgrade-Insecure-Requests", "1")
                     .header("Accept-Encoding", "gzip, deflate, br")
                     .header("Accept-Language", "zh,en;q=0.9")
-                    .cookie("Cookie", cookie)
+                    .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36")
                     .execute();
         } catch (IOException e) {
             e.printStackTrace();
