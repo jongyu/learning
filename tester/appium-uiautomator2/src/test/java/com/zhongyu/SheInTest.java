@@ -32,8 +32,8 @@ public class SheInTest {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.1.0");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "da11cabb");
         capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
-        capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.zzkko");
-        capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ".bussiness.login.ui.WelcomeActivity");
+        capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "");
+        capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "");
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
@@ -44,8 +44,8 @@ public class SheInTest {
         driver.findElementByXPath("//android.widget.ImageButton[@content-desc=\"Open navigation drawer\"]").click();
         driver.findElementById("imageView").click();
         driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().className(\"android.support.v7.app.ActionBar$Tab\").instance(0)")).click();
-        driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"com.zzkko:id/email_edt\")")).sendKeys("zhongyu@gmail.com");
-        driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"com.zzkko:id/pwdEdtTxt\")")).sendKeys("Shein1235");
+        driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"com:id/email_edt\")")).sendKeys("");
+        driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"com:id/pwdEdtTxt\")")).sendKeys("");
         driver.findElementById("login_or_register_button").click();
         String xpath = "//*[@class='android.widget.Toast']";
         WebDriverWait wait = new WebDriverWait(driver, 10);
